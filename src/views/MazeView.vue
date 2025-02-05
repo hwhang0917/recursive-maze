@@ -1,4 +1,3 @@
 <template>
-  <div>
-  </div>
+  <h2>Maze View</h2>
 </template>
