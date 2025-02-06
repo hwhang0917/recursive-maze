@@ -1,10 +1,10 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
 import HomeView from './views/HomeView.vue';
-import MazeView from './views/MazeView.vue';
+import SolutionView from './views/SolutionView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
-  { path: '/solution', component: MazeView },
+  { path: '/solution', component: SolutionView },
 ]
 
 export const router = createRouter({

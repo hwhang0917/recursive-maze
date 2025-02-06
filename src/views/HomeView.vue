@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useMaze } from '@/composables/useMaze';
 import { END, START, WALL } from '@/constants'
-import mazeStore from '@/stores/mazeStore'
 import { computed } from 'vue'
 
+const { state } = useMaze();
+
 const maze = computed(() => {
-  return mazeStore.maze.map((row) => {
+  return state.maze.map((row) => {
     return row.split('')
   })
 })
