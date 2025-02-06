@@ -11,68 +11,50 @@ const maze = computed(() => {
 </script>
 
 <template>
-  <div class="wrapper">
-    <div class="maze">
+  <div class="maze-container">
+    <div
+      class="row"
+      v-for="(row, rowIndex) in maze"
+      :key="rowIndex"
+      :style="{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }"
+    >
       <div
-        class="maze-row"
-        v-for="row in maze"
-        :key="row.join('')"
-      >
-        <div
-          class="maze-cell"
-          v-for="cell in row"
-          :key="cell"
-          :class="{
-            wall: cell === WALL,
-            start: cell === START,
-            end: cell === END
-          }"
-        >
-          {{ cell }}
-        </div>
-      </div>
+        class="col"
+        v-for="(cell, cellIndex) in row"
+        :key="cellIndex"
+        :style="{ gridTemplateRows: `repeat(${row.length}, 1fr)` }"
+        :class="{
+          space: cell === ' ',
+          wall: cell === WALL,
+          start: cell === START,
+          end: cell === END,
+        }"
+      />
     </div>
-    <button class="solve">Solve</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.maze-container {
   display: grid;
-  gap: 1rem;
-  .solve {
-    padding: 0.5rem 1rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    &:hover {
-      background-color: #555;
+  border: 1px solid black;
+  width: 100%;
+  .row {
+    display: grid;
+    .col {
+      aspect-ratio: 1 / 1;
     }
-  }
-  .maze {
-    user-select: none;
-    .maze-row {
-      display: flex;
-      .maze-cell {
-        width: 2rem;
-        height: 2rem;
-        border: 1px solid black;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .wall {
-        background-color: black;
-      }
-      .start {
-        background-color: green;
-      }
-      .end {
-        background-color: red;
-      }
+    .space {
+      background-color: white;
+    }
+    .wall {
+      background-color: black;
+    }
+    .start {
+      background-color: green;
+    }
+    .end {
+      background-color: red;
     }
   }
 }
