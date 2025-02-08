@@ -1,14 +1,15 @@
 import { reactive, ref } from 'vue'
 
-interface Size {
+export interface Size {
   x: number
   y: number
 }
+export type Maze = string[]
+export type Selected = 'start' | 'end' | 'wall' | 'empty'
 interface MazeStore {
-  maze: string[]
+  maze: Maze
   size: Size
 }
-export type Selected = 'start' | 'end' | 'wall' | 'empty'
 
 const mazeStore = reactive<MazeStore>({
   maze: [

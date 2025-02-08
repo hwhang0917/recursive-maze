@@ -40,7 +40,7 @@ const maze = computed(() => {
 .maze-container {
   display: grid;
   border: 1px solid black;
-  width: 100%;
+  width: 50%;
   .row {
     display: grid;
     .col {

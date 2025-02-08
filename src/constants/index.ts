@@ -8,3 +8,4 @@ export const DIRECTIONS = [
 export const WALL = '#'
 export const START = 'S'
 export const END = 'E'
+export const EMPTY = ' '

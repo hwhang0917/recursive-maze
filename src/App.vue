@@ -1,64 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { RouterView } from 'vue-router'
-import { useMaze, type Selected } from './composables/useMaze'
+import { buildMaze, printMaze } from './utils'
 
-const { state, setSize, selected } = useMaze()
-
-const xSize = ref(state.size.x)
-const ySize = ref(state.size.y)
-
-const onXChange = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  xSize.value = parseInt(target.value)
-}
-const onYChange = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  ySize.value = parseInt(target.value)
-}
-const onSet = () => setSize({ x: xSize.value, y: ySize.value })
-
-const setSelected = (type: Selected) => selected.value = type
+printMaze(buildMaze({ x: 20, y: 10 }))
 </script>
 
 <template>
   <header>
     <h1>Recursive Maze Solver</h1>
-    <!--
-    <nav>
-      <form @submit.prevent="onSet">
-        <input type="number" placeholder="X" :value="xSize" @change="onXChange" />
-        <input type="number" placeholder="Y" :value="ySize" @change="onYChange" />
-        <input type="submit" value="Set" />
-      </form>
-      <div class="buttons">
-        <button
-          class="empty"
-          :class="{ selected: selected === 'empty' }"
-          title="Empty"
-          @click="setSelected('empty')"
-        />
-        <button
-          class="wall"
-          :class="{ selected: selected === 'wall' }"
-          title="Wall"
-          @click="setSelected('wall')"
-        />
-        <button
-          class="start"
-          :class="{ selected: selected === 'start' }"
-          title="Start"
-          @click="setSelected('start')"
-        />
-        <button
-          class="end"
-          :class="{ selected: selected === 'end' }"
-          title="End"
-          @click="setSelected('end')"
-        />
-      </div>
-    </nav>
-    -->
   </header>
   <main>
     <RouterView />
