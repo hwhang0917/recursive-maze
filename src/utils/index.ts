@@ -25,3 +25,9 @@ export const printMaze = (maze: Maze) => {
     console.log(`[${i}]    ` + parsedRow)
   }
 }
+
+export const pause = async (delay: number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay)
+  })
+}

@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { buildMaze, printMaze } from './utils'
-
-printMaze(buildMaze({ x: 20, y: 10 }))
 </script>
 
 <template>
