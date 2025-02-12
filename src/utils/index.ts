@@ -1,8 +1,8 @@
-import type { Maze, Size } from "@/composables/useMaze"
-import { EMPTY, END, START, WALL } from "@/constants"
+import type { Maze, Size } from '@/composables/useMaze'
+import { EMPTY, END, START, WALL } from '@/constants'
 
-export const buildMaze = (size: Size): Maze  => {
-  const maze: Maze  = []
+export const buildMaze = (size: Size): Maze => {
+  const maze: Maze = []
   const topRow = WALL.repeat(size.x - 2) + END + WALL
   const bottomRow = WALL + START + WALL.repeat(size.x - 2)
   const midRow = WALL + EMPTY.repeat(size.x - 2) + WALL
