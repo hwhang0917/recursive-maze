@@ -37,7 +37,7 @@ const maze = computed(() => {
     <button class="btn" :disabled="isSolving || path.length > 0" @click="() => solve()">
       solve
     </button>
-    <button class="btn" @click="() => resetMaze(state.size.x, state.size.y)">reset</button>
+    <button class="btn" :disabled="isSolving" @click="() => resetMaze(state.size.x, state.size.y)">reset</button>
   </div>
 </template>
 
