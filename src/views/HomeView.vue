@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useMaze } from '@/composables/useMaze';
+import { useMaze } from '@/composables/useMaze'
 import { EMPTY, END, PATH, START, WALL } from '@/constants'
 import { computed } from 'vue'
 
-const { state, solve, isSolving, path } = useMaze();
+const { state, solve, resetMaze, isSolving, path } = useMaze()
 
 const maze = computed(() => {
   return state.maze.map((row) => {
@@ -34,18 +34,15 @@ const maze = computed(() => {
         }"
       />
     </div>
-    <button
-      class="solve-btn"
-      :disabled="isSolving || path.length > 0"
-      @click="() => solve()"
-    >
+    <button class="btn" :disabled="isSolving || path.length > 0" @click="() => solve()">
       solve
     </button>
+    <button class="btn" @click="() => resetMaze(state.size.x, state.size.y)">reset</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.solve-btn {
+.btn {
   padding: 1rem;
 }
 .maze-container {
@@ -63,7 +60,7 @@ const maze = computed(() => {
       justify-content: center;
       align-items: center;
       &::after {
-        content: ".";
+        content: '.';
       }
     }
     .empty {
