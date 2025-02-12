@@ -10,7 +10,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
-  base: "/recurvie-maze/",
+  base: "https://hwhang0917.github.io/recursive-maze/",
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
