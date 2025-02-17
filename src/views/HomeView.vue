@@ -35,9 +35,21 @@ const maze = computed(() => {
       />
     </div>
     <button class="btn" :disabled="isSolving || path.length > 0" @click="() => solve()">
-      solve
+      SOLVE
     </button>
-    <button class="btn" :disabled="isSolving" @click="() => resetMaze(state.size.x, state.size.y)">reset</button>
+    <button class="btn" :disabled="isSolving" @click="() => resetMaze(state.size.x, state.size.y)">
+      RESET
+    </button>
+    <div class="inputs">
+      <div>
+        <label for="x">X</label>
+        <input type="number" v-model="state.size.x" id="x" :disabled="isSolving" />
+      </div>
+      <div>
+        <label for="y">Y</label>
+        <input type="number" v-model="state.size.y" id="y" :disabled="isSolving" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,10 +57,28 @@ const maze = computed(() => {
 .btn {
   padding: 1rem;
 }
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  label {
+    margin: 0.2rem;
+  }
+}
 .maze-container {
   display: grid;
   border: 1px solid black;
   width: 50%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   .row {
     display: grid;
     .col {
@@ -59,9 +89,6 @@ const maze = computed(() => {
       display: flex;
       justify-content: center;
       align-items: center;
-      &::after {
-        content: '.';
-      }
     }
     .empty {
       background-color: white;
